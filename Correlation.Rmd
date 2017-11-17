@@ -1,0 +1,30 @@
+---
+title: "Test"
+author: "Randall Moya"
+date: "November 17, 2017"
+output: html_document
+---
+
+```{r}
+library(ISwR)
+library(corrplot)
+library(RColorBrewer)
+```
+
+```{r}
+data(cystfibr)
+
+pred.data <- cystfibr[, 1:9]
+cor.mat <- cor(pred.data)
+```
+
+```{r}
+corrplot(cor.mat, order="hclust", 
+         col=brewer.pal(n=5, name="RdBu"),
+         number.digits = 2, 
+         number.cex = 0.75, 
+         tl.srt=45, 
+         mar = c(0, 0, 0, 2),
+         addCoef.col = "black")
+```
+
